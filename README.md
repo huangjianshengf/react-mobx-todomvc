@@ -27,4 +27,11 @@ open http://localhost:3000
     ````
   * 重新启动  `npm run start`
 
+* 使用 mobx 注入 store
+  * 使用 inject 注入 store
+  * 使用 props 的方式 传递 store 
+  * 区别 
+    * 使用 inject 注入 store 相对 使用 props传递的方式 更加的方便快捷
+    * 使用 inject 注入 store 的时候通过 ref的方式获取组件的实例的时候 拿到的是 Injector 而非真正的组件实例， 解决办法- 使用props 的方式传递
+
 

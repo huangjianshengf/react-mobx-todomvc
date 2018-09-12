@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
 import AddTodoEnter from './AddTodoEnter';
 import TodoList from './TodoList';
 import TodoFooter from './TodoFooter';
@@ -6,7 +7,7 @@ import {observer, inject} from 'mobx-react'
 // todomvc css 样式  npm install todomvc-app-css -S
 import 'todomvc-app-css/index.css'
 
-@inject('viewStore')
+@inject('viewStore', 'todoStore')
 @observer
 class TodoApp extends Component {
   render() {
@@ -16,22 +17,15 @@ class TodoApp extends Component {
             <AddTodoEnter />
         </header>
         <TodoList />
-				<TodoFooter />
+				<TodoFooter todoStore={this.props.todoStore} viewStore={this.props.viewStore} ref={todoFooter => this._todoFooter = todoFooter} />
       </div>
     );
   }
 
   componentDidMount() {
-      var viewStore = this.props.viewStore;
-      // 前端路由插件 https://github.com/flatiron/director github官网
-      var { Router } = require('director/build/director');
-			var router = Router({
-				'/': function() { viewStore.todoFilter = 'All'; },
-				'/active': function() { viewStore.todoFilter = 'Active'; },
-				'/completed': function() { viewStore.todoFilter = 'Completed'; }
-			});
-		router.init('/');
-	}
+      // 测试 用 props 传递 store 和 用inject 注入 用ref 拿到的 实例区别
+      // console.log(this._todoFooter)
+  }
 }
 
 export default TodoApp;
