@@ -5,12 +5,14 @@ import './index.css';
 import TodoApp from './TodoApp';
 import registerServiceWorker from './registerServiceWorker';
 
-import TodoStore from './stores/TodoStore';
+import TodoStore from './stores/ListStore';
 import ViewStore from './stores/ViewStore';
 import {Provider} from 'mobx-react';
 
 let todoStore = new TodoStore();
 let viewStore = new ViewStore();
+
+todoStore.todoTitleChangeReaction();
 
 ReactDOM.render((
     <Provider todoStore={todoStore} viewStore={viewStore}>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TodoEnter from './TodoEnter';
+import AddTodoEnter from './AddTodoEnter';
 import TodoList from './TodoList';
 import TodoFooter from './TodoFooter';
 import {observer, inject} from 'mobx-react'
@@ -13,7 +13,7 @@ class TodoApp extends Component {
     return (
       <div className="App">
         <header className="header">
-            <TodoEnter />
+            <AddTodoEnter />
         </header>
         <TodoList />
 				<TodoFooter />

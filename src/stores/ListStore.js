@@ -1,4 +1,4 @@
-import {observable, computed} from 'mobx';
+import {observable, computed, reaction} from 'mobx';
 
 export default class TodoStore {
 	@observable todos = [];
@@ -18,8 +18,18 @@ export default class TodoStore {
 
   // 添加 todo 
 	addTodo (title) {
-		this.todos.push({store: this, id: parseInt(Math.random() * 1000000000000), title: title, completed: false});
-	}
+    this.todos.push({store: this, id: parseInt(Math.random() * 1000000000000), title: title, completed: false});
+  }
+  
+  // 监听 todoItem的 title 的变化
+  todoTitleChangeReaction () {
+    reaction(
+      () => this.todos.map(item => item.title),
+      todos => {
+        console.log(todos);
+      }
+    );
+  }
 
   // 切换全部
 	toggleAll (checked) {

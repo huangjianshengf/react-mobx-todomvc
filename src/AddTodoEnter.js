@@ -4,7 +4,7 @@ import {observer ,inject} from 'mobx-react';
 // 新增 todo 
 @inject('todoStore')
 @observer
-class TodoEnter extends Component {
+class AddTodoEnter extends Component {
   render() {
     return <input onKeyUp={this.addTodo} className="new-todo" placeholder="What needs to be done?" autoFocus={true}/>;
   }
@@ -25,4 +25,4 @@ class TodoEnter extends Component {
   }
 }
 
-export default TodoEnter;
+export default AddTodoEnter;

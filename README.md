@@ -25,6 +25,6 @@ open http://localhost:3000
       ]
     },
     ````
-  * 重新启动  `npm run start`
+  * 重新启动  `npm run start`
 
 
